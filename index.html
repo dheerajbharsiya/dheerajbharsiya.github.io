@@ -3,6 +3,47 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<style>
+.navbar.navbar-default.myNavBar {
+    background: beige;
+}
+.nav.navbar-nav>li {
+padding-left: 20px;
+}
+
+.nav.navbar-nav.myNavBar-nav {
+    flex-direction: row;
+}
+
+.container-fluid.main-container {
+    background : gray;
+    height: 100vh;
+    padding-top: 20px;
+}
+
+.container-fluid.main-container .card {
+    float: left;
+    margin-left: 30px;
+    flex-direction: row;
+    height: 12rem;
+}
+
+.btn.btn-bottom-aligned{
+    position: absolute;
+    bottom: 5px;
+}
+.text-small {
+    font-size: 14px;
+    font-weight: bold;
+    color:chocolate;
+}
+
+.navbar-brand.myDetails {
+    display: block;
+    line-height: 0.5;
+}
+
+</style>
 
 </head>
 <div id="root"></div>
@@ -14,16 +55,44 @@
 
 
 class Greeting extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            frameworks: [
+                {
+                name: 'Angular',
+                description: 'Angular is great framework and I have been working on it since I have started web development',
+                myLevel: 'Expertise'
+                },
+                {
+                name: 'ReactJs',
+                description: 'React is very fast and easy to adapt, This site is build in React',
+                myLevel: 'Intermidate'
+                },
+                {
+                name: 'Javascript',
+                description: 'Javascript is everywhere',
+                myLevel: 'Expertise'
+                }
+            ]
+        }
+    }
     render() {
         return (
-    
+            <div>
             <header>
-                    <nav className="navbar navbar-default">
-                        <div className="container-fluid">
+                    <nav className="navbar navbar-default myNavBar">
+                        <div className="container-fluid header">
                             <div className="navbar-header">
-                            <a className="navbar-brand" href="#">My Study Table</a>
+                            <p className="navbar-brand">My Study Table </p>
+                            <p className="navbar-brand myDetails">
+                            <p className='text-small myEmail'>Dheeraj Bharsiya</p>
+                            <p className='text-small'>
+                                <a href="mailto:dheerajbharsiya@gmail.com">dheerajbharsiya@gmail.com</a>
+                            </p>
+                            </p>
                             </div>
-                            <ul className="nav navbar-nav">
+                            <ul className="nav navbar-nav myNavBar-nav">
                             <li className="active"><a href="#">Home</a></li>
                             <li><a href="#">About Me</a></li>
                             <li><a href="#">My Resume</a></li>
@@ -31,8 +100,20 @@ class Greeting extends React.Component {
                         </div>
                     </nav>
             </header>
-        
-        
+            <div className='container-fluid main-container' >
+                {this.state.frameworks.map((value, index) => {
+        return (
+            <div className="card" style={{width: '18rem'}} key={value.name}>
+                <div className="card-body">
+                    <h5 className="card-title">{value.name}</h5>
+                    <p className="card-text">{value.description}</p>
+                    <a href="#" className="btn btn-primary btn-bottom-aligned">My {value.name} Projects</a>
+                </div>
+            </div>
+            )
+            })}
+            </div>
+            </div>
         );
     }
 }
