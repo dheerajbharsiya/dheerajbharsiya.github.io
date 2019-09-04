@@ -5,7 +5,7 @@
 </head>
 <div id="root"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://unpkg.com/react-dom@latest/umd/react-dom.development.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
 <script src="https://unpkg.com/@material-ui/core@latest/umd/material-ui.development.js" crossorigin="anonymous"></script>
 <script type="text/babel">
@@ -20,7 +20,8 @@ const {
   createMuiTheme,
   Box,
   SvgIcon,
-  Link
+  Link,
+  Button
 } = MaterialUI;
 
 class Greeting extends React.Component {
